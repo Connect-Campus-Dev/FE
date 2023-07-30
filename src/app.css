@@ -1,0 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+input, textarea, button, select, a {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+}
+
+*:focus, *:active {
+	outline: none !important;
+	-webkit-tap-highlight-color: transparent !important;
+}
