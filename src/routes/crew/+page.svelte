@@ -11,7 +11,7 @@
 <Appbar title="크루" />
 
 <main>
-    
+
 </main>
 
 
