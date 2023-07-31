@@ -4,7 +4,6 @@
     import PostCard from '$lib/PostCard.svelte';
     import Headroom from "svelte-headroom";
     import { onMount } from 'svelte';
-    import { slide } from 'svelte/transition';
 
     const univActivity = [
       {

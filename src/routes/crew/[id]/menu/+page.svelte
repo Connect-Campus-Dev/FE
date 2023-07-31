@@ -1,6 +1,5 @@
 <script>
     import { page } from "$app/stores";
-    import { onMount } from "svelte";
     import Icon from "$lib/Icon.svelte";
     import { goto } from "$app/navigation";
 

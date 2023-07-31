@@ -1,9 +1,6 @@
 <script>
     import Icon from '$lib/Icon.svelte';
     import Nav from '$lib/Nav.svelte';
-    import Appbar from "$lib/Appbar.svelte";
-    import Headroom from "svelte-headroom";
-    import { goto } from '$app/navigation';
     import { truncate } from "$lib/utils.js";
 
     // mycrew, explore
