@@ -150,9 +150,3 @@
 <div class="h-24" />
 
 <Nav currentPath="/mypage" />
-
-<style>
-	.scroll::-webkit-scrollbar {
-		display: none;
-	}
-</style>

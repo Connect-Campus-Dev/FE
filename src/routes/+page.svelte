@@ -4,6 +4,7 @@
     import PostCard from '$lib/PostCard.svelte';
     import Headroom from "svelte-headroom";
     import { onMount } from 'svelte';
+    import { slide } from 'svelte/transition';
 
     const univActivity = [
       {
@@ -66,9 +67,9 @@
 </script>
 
 <Headroom offset={100}>
-  <header class="flex items-center max-w-md justify-between gap-4 p-4 bg-white shadow">
+  <header class="flex items-center max-w-md justify-between gap-4 p-4 bg-white">
       <h1 class="font-extrabold text-2xl text-green-600">
-          <a href="/"><img src="/ccc.png" alt="홈아이콘" class="inline rounded-xl w-10" /></a>
+          <a href="/"><img src="/logo.png" alt="홈아이콘" class="inline rounded-xl w-14" /></a>
       </h1>
       <div class="flex items-center justify-center w-full h-10 px-4 bg-gray-100 rounded-full border-none gap-2">
           <Icon icon="search" size={20} color="lightgray" />
@@ -83,40 +84,43 @@
           <div class="absolute -right-1 -top-1 flex justify-center items-center w-2 h-2 rounded-full bg-red-500 text-xs text-white"></div>
       </button>
   </header>
+      <!-- 태그 -->
+        <div
+          class="mb-4 pb-4 bg-white max-w-md border-b">
+
+          <div class="overflow-x-auto flex gap-2">
+            {#each tags as tag, i}
+              <div class="{i == 0 ? 'ml-4' : ''} {i == tags.length - 1 ? 'mr-4' : ''}">
+                <button class="px-3 py-1 rounded-full bg-green-500 text-white whitespace-nowrap text-sm">
+                  {tag}
+                </button>
+              </div>
+            {/each}
+          </div>
+        </div>
 </Headroom>
 
-<main class="mt-20">
+<main class="mt-32">
     <!-- 실시간 인기 포스트 -->
-    <div class="flex justify-between items-center">
+    <!-- <div class="flex justify-between items-center">
         <h3 class="p-4 font-bold text-lg text-gray-700">실시간 인기 포스트 🔥</h3>
         <button class="p-4 text-sm text-gray-600 flex items-center">
             더 보기
             <Icon icon="chevron-right" size={16} />
         </button>
-    </div>
+    </div> -->
     <!-- 게시글 카드 -->
-    {#each "012" as i}
+    <!-- {#each "012" as i}
         <PostCard />
         <hr class="my-4" />
-    {/each}
+    {/each} -->
 
     <!-- 최신 포스트 -->
-    <h3 class="mt-4 p-4 pb-0 font-bold text-lg text-gray-700">최신 포스트 🍃</h3>
+    <!-- <h3 class="mt-4 p-4 pb-0 font-bold text-lg text-gray-700">최신 포스트 🍃</h3> -->
 
-    <!-- 태그 -->
-    <div class="px-4 mt-2 mb-4">
-      <div class="overflow-x-auto flex gap-1">
-        {#each tags as tag}
-          <div>
-            <button class="px-3 py-1 rounded-full bg-green-500 text-white whitespace-nowrap text-sm">
-              {tag}
-            </button>
-          </div>
-        {/each}
-      </div>
-    </div>
 
-    {#each "0123456789" as i}
+
+    {#each "012345678912312321" as i}
         <PostCard />
         <hr class="my-4" />
     {/each}
@@ -135,7 +139,7 @@
 
 <!-- 최상단가기 버튼 -->
 {#if showButton}
-  <button on:click={scrollToTop} class="p-2 shadow bg-white text-green-500 fixed bottom-20 rounded-full">
+  <button on:click={scrollToTop} class="p-2 shadow bg-white text-green-500 fixed bottom-20 right-5 rounded-full">
     <Icon icon="chevron-up" size={20} />
   </button>
 {/if}
