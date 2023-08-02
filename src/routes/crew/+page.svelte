@@ -6,7 +6,7 @@
     // mycrew, explore
     let tabState = "mycrew";
     let tags = ['#신생', '#번개', '#런닝', '#클라이밍', '#술', '#노래', '#게임', '#쇼핑', '#헬스'];
-    let myCrews = ['런닝맨', '번개맨들', '술에찌든자들', '노래가너무너무좋아요', '협곡의망령', '쇼핑중독자들', '득근득근헬스보이'];
+    let myCrews = ['런닝맨'];
     let hotTags = ['#런닝', '#클라이밍'];
     let hotCrews = ['런닝맨', '협곡의망령'];
     let storys = [1,2,3,4,5,6];
@@ -14,27 +14,32 @@
 
 </script>
 
-    <div class="flex items-center max-w-md justify-between gap-4 p-4 bg-white">
-        <a href="/crew/search" class="flex items-center justify-center w-full h-10 px-4 bg-gray-100 rounded-full border-none gap-2">
-            <Icon icon="search" size={20} color="lightgray" />
-            <input
-            class="w-full h-10 px-2 text-base border-none bg-transparent ring:border-none rounded-full placeholder-neutral-400 focus:outline-none"
-            type="text"
-            placeholder="검색어를 입력하세요"
-            />
-        </a>
-    </div>
+<div class="flex items-center max-w-md justify-between gap-4 p-4 bg-white border-b">
+    <a href="/crew/search" class="flex items-center justify-center w-full h-10 px-4 bg-gray-100 rounded-full border-none gap-2">
+        <Icon icon="search" size={20} color="lightgray" />
+        <input
+        class="w-full h-10 px-2 text-base border-none bg-transparent ring:border-none rounded-full placeholder-neutral-400 focus:outline-none"
+        type="text"
+        placeholder="검색어를 입력하세요"
+        />
+    </a>
+</div>
 
 <h3 class="font-bold text-lg mt-4 ml-4">
     내 크루
 </h3>
 <div class="flex gap-4 my-4 overflow-x-auto text-center">
     {#each myCrews as crew, i}
-    <a href="/crew/1" class="w-24 {i == 0 ? 'ml-4' : ''} {i == myCrews.length - 1 ? 'mr-4' : ''}">
+    <a href="/crew/1" class="w-24 {i == 0 ? 'ml-4' : ''}">
         <div class="w-24 h-24 rounded-full bg-gray-200"/>
         <div class="text-gray-700 mt-1 truncate">{crew}</div>
     </a>
     {/each}
+    <a href="/crew/create" class="w-24 mr-4">
+        <div class="w-24 h-24 rounded-full bg-gray-200 text-white bg-green-500 grid place-items-center">
+            <Icon icon="plus" size={36} />
+        </div>
+    </a>
 </div>
 
 <!-- <h3 class="font-bold text-lg mt-8 ml-4">

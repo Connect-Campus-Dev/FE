@@ -7,9 +7,9 @@
     import "../app.css";
 </script>
 
-<div class="w-full bg-gray-100 scroll">
-    <div class="flex justify-center scroll">
-        <div class="max-w-md w-full min-h-screen bg-white scroll">
+<div class="w-full bg-gray-100">
+    <div class="flex justify-center">
+        <div class="max-w-md w-full min-h-screen bg-white">
             <slot />
         </div>
     </div>
