@@ -35,7 +35,7 @@
 
 
     <!-- 그룹팅 -->
-    <a href="#" class="mt-4 p-4 rounded-lg w-full h-36 shadow-md flex items-center justify-between bg-white">
+    <a href="/love/groupting" class="mt-4 p-4 rounded-lg w-full h-36 shadow-md flex items-center justify-between bg-white">
         <div class="text-start flex flex-col gap-y-2">
             <h3 class="text-xl font-extrabold text-gray-700">그룹팅</h3>
             <div class="text-gray-500 text-base">
