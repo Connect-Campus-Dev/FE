@@ -125,7 +125,7 @@
             <Icon icon="chevron-right" size={24} />
         </div>
     </a>
-    <a href="#" class="p-4 flex items-center justify-between text-gray-700">
+    <a href="/login" class="p-4 flex items-center justify-between text-gray-700">
         로그아웃
         <div class="text-gray-500">
             <Icon icon="chevron-right" size={24} />

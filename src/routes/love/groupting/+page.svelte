@@ -68,7 +68,7 @@
     시그널을 기다리고 있어요 💌
 </h3>
 
-<h4 class="font-bold mt-2 mx-4 flex items-center justify-between">
+<h4 class="font-bold mt-2 mx-4 flex items-center justify-between mb-4">
     2:2 그룹팅
     <a href="#" class="text-gray-500 text-sm flex items-center gap-1">
         더보기
@@ -77,7 +77,7 @@
 </h4>
 <div class="flex flex-col gap-2 px-4 mt-2">
     {#each oppositeParties as party, i}
-        <button class="w-full h-24 flex items-center justify-left text-xl">
+        <button class="w-full flex items-center justify-left text-xl">
             <div class="relative w-1/5">
                 <div class="absolute -bottom-4 -left- w-14 h-14 rounded-xl bg-gray-200 border border-white" />
                 <div class="absolute -top-4 left-6 w-14 h-14 rounded-xl bg-gray-200 border border-white" />
@@ -97,7 +97,7 @@
     {/each}
 </div>
 
-<h4 class="font-bold mt-8 mx-4 flex items-center justify-between">
+<h4 class="font-bold mt-8 mx-4 flex items-center justify-between mb-4">
     3:3 그룹팅
     <a href="#" class="text-gray-500 text-sm flex items-center gap-1">
         더보기
@@ -106,7 +106,7 @@
 </h4>
 <div class="flex flex-col gap-2 px-4 mt-2">
     {#each oppositeParties as party, i}
-        <button class="w-full h-24 flex items-center justify-left text-xl">
+        <button class="w-full flex items-center justify-left text-xl">
             <div class="relative w-1/5">
                 <div class="absolute -top-9 left-8 w-12 h-12 rounded-xl bg-gray-200 border border-white" />
                 <div class="absolute -top-5 w-12 h-12 rounded-xl bg-gray-200 border border-white" />
@@ -127,7 +127,7 @@
     {/each}
 </div>
 
-<h4 class="font-bold mt-8 mx-4 flex items-center justify-between">
+<h4 class="font-bold mt-8 mx-4 flex items-center justify-between mb-4">
     4:4 그룹팅
     <a href="#" class="text-gray-500 text-sm flex items-center gap-1">
         더보기
@@ -136,7 +136,7 @@
 </h4>
 <div class="flex flex-col gap-2 px-4 mt-2">
     {#each oppositeParties as party, i}
-        <button class="w-full h-24 flex items-center justify-left text-xl">
+        <button class="w-full flex items-center justify-left text-xl">
             <div class="relative w-1/5">
                 <div class="absolute bottom-0 w-11 h-11 rounded-xl bg-gray-200 border border-white" />
                 <div class="absolute bottom-0 left-11 w-11 h-11 rounded-xl bg-gray-200 border border-white" />

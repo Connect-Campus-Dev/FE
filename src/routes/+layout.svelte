@@ -5,6 +5,7 @@
 </svelte:head>
 <script>
     import "../app.css";
+    import Toast from "$lib/Toast.svelte";
 </script>
 
 <div class="w-full bg-gray-100">
@@ -14,3 +15,4 @@
         </div>
     </div>
 </div>
+<Toast />

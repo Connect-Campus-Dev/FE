@@ -58,7 +58,7 @@
     </div>
 
     <h4 class="font-bold block mb-1">보낸 시그널</h4>
-    <button class="w-full h-24 flex items-center justify-left text-xl">
+    <button class="mt-4 w-full flex items-center justify-left text-xl">
         <div class="relative w-1/5">
             <div class="absolute bottom-0 w-11 h-11 rounded-xl bg-gray-200 border border-white" />
             <div class="absolute bottom-0 left-11 w-11 h-11 rounded-xl bg-gray-200 border border-white" />
@@ -78,7 +78,7 @@
 
 
     <h4 class="mt-8 font-bold block mb-1">받은 시그널</h4>
-    <button class="w-full h-24 flex items-center justify-left text-xl">
+    <button class="mt-4 w-full flex items-center justify-left text-xl">
         <div class="relative w-1/5">
             <div class="absolute bottom-0 w-11 h-11 rounded-xl bg-gray-200 border border-white" />
             <div class="absolute bottom-0 left-11 w-11 h-11 rounded-xl bg-gray-200 border border-white" />
