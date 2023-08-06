@@ -51,14 +51,17 @@
 <!-- step 0: 거주 지역 -->
 {#if step == 0}
 <main class="m-4">
-    <h3 class="font-extrabold text-2xl text-gray-700">
+    <h3>
         거주 지역을 알려주세요
     </h3>
-    <div class="mt-24">
+    <div class="mb-24 mt-2 text-gray-500 ">
+        상대방이 참고할 수 있도록<br />거주지역을 알려주세요.
+    </div>
+    <div class="mt-24 shadow-md rounded-lg px-2">
         <select
             bind:value={region}
             name="region"
-            class="text-center w-full bg-white rounded h-10 font-bold text-base"
+            class="text-center w-full bg-white font-bold text-base border-none h-12"
         >
             {#each regions as region}
                 <option value={region}>{region}</option>
@@ -80,7 +83,7 @@
 <!-- step 1: mbti -->
 {#if step == 1}
 <main class="m-4">
-    <h3 class="font-extrabold text-2xl text-gray-700">
+    <h3>
         MBTI를 알려주세요
     </h3>
     <div class="mb-24 mt-2 text-gray-500 ">
@@ -159,9 +162,12 @@
 <!-- step 2: 키 -->
 {#if step == 2}
 <main class="m-4">
-    <h3 class="font-extrabold text-2xl text-gray-700">
+    <h3>
         키를 알려주세요
     </h3>
+    <div class="mb-24 mt-2 text-gray-500 ">
+        대략적인 키도 괜찮아요.
+    </div>
     <div class="mt-24 mx-16 flex items-center relative">
         <input bind:value={height} type="tel" class="text-center w-full border border-b border-t-0 rounded-none border-x-0 border-gray-400 p-4" />
         <div class="absolute right-12 font-extrabold text-lg">cm</div>
@@ -181,7 +187,7 @@
 <!-- step 3: 성격 -->
 {#if step == 3}
 <main class="m-4">
-    <h3 class="font-extrabold text-2xl text-gray-700">
+    <h3>
         어떤 성격이신가요?
     </h3>
     <div class="mt-2 text-gray-500 ">
@@ -217,8 +223,8 @@
 <!-- step 4: 취미 -->
 {#if step == 4}
 <main class="m-4">
-    <h3 class="font-extrabold text-2xl text-gray-700">
-        김문만님의<br />취미를 알려주세요
+    <h3>
+        OOO님의<br />취미를 알려주세요
     </h3>
     <div class="mt-2 text-gray-500 ">
         취미를 통해 당신의 매력을 알려주세요.<br />최대 3개까지 선택 가능해요.
@@ -253,14 +259,14 @@
 <!-- step 5: 한줄소개 -->
 {#if step == 5}
 <main class="m-4">
-    <h3 class="font-extrabold text-2xl text-gray-700">
-        김문만님을<br />한 줄로 소개한다면?
+    <h3>
+        OOO님을<br />한 줄로 소개한다면?
     </h3>
     <div class="mt-2 text-gray-500 ">
         한 줄로 소개해주세요.<br />최대 20자까지 입력 가능해요.
     </div>
     <div class="mt-24">
-        <input bind:value={intro} type="text" class="w-full border border-b border-t-0 rounded-none border-x-0 border-gray-400 p-4" />
+        <input bind:value={intro} type="text" placeholder="한줄소개" class="w-full border border-b border-t-0 rounded-none border-x-0 border-gray-400 p-4" />
     </div>
 </main>
 <div class="fixed bottom-0 w-full inset-x-0">
@@ -277,7 +283,7 @@
 <!-- step 6: 사진 -->
 {#if step == 6}
 <main class="m-4">
-    <h3 class="font-extrabold text-2xl text-gray-700">
+    <h3>
         마지막이에요!<br />본인의 사진을 올려주세요
     </h3>
     <div class="mt-2 text-gray-500 ">

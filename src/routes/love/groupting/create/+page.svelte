@@ -64,9 +64,9 @@
 
 </main>
 
-    <!-- 생성 버튼 -->
-    <div class="fixed bottom-0 w-full inset-x-0">
-        <button on:click={create} class="bg-green-500 text-white py-4 text-lg w-full">
-            생성
-        </button>
-    </div>
+<!-- 생성 버튼 -->
+<div class="fixed bottom-0 w-full inset-x-0">
+    <button on:click={create} class="bg-green-500 text-white py-4 text-lg w-full">
+        생성
+    </button>
+</div>

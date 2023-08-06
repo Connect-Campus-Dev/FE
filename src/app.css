@@ -12,14 +12,30 @@
 	display: none;
 }
 
-input, textarea, button, a {
+input, textarea, button, a{
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 	appearance: none;
 	-moz-appearance: none;
 	-webkit-appearance: none;
+
+
+}
+
+select, option {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	
+	text-align-last: center;
+	-ms-text-align-last: center;
+	-moz-text-align-last: center;
 }
 
 *:focus, *:active {
 	outline: none !important;
 	-webkit-tap-highlight-color: transparent !important;
 }
+
+h3 {
+	font-weight: bold;
+	font-size: 1.5rem; /* text-2xl에 해당하는 크기로 조정 */
+	color: #4a5568; /* text-gray-700에 해당하는 색상으로 조정 */
+  }
