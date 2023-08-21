@@ -12,7 +12,7 @@
     let tabState = "story";
 </script>
 
-<div class="relative bg-white h-14 items-center sticky top-0 border-b flex z-10">
+<header class="relative bg-white h-14 items-center sticky top-0 border-b flex z-10">
     <button
         on:click={() => {
             goto("/crew");
@@ -30,7 +30,7 @@
     >
         <Icon icon="menu" size={24} />
     </button>
-</div>
+</header>
 <div
     class="w-full h-40 relative flex justify-center items-center overflow-hidden bg-gray-300"
     style="z-index: 0"

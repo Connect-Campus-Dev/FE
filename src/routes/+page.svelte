@@ -71,7 +71,7 @@
           <a href="/"><img src="/logo.png" alt="홈아이콘" class="inline rounded-xl w-14" /></a>
       </h1>
       <div class="flex items-center justify-center w-full h-10 px-4 bg-gray-100 rounded-full border-none gap-2">
-          <Icon icon="search" size={20} color="lightgray" />
+          <Icon icon="search" size={20} />
           <input
             class="w-full h-10 px-2 text-base border-none bg-transparent ring:border-none rounded-full placeholder-neutral-400 focus:outline-none"
             type="text"
@@ -79,7 +79,7 @@
           />
       </div>
       <button class="relative">
-          <Icon icon="bell" color="lightgray" />
+          <Icon icon="bell" />
           <div class="absolute -right-1 -top-1 flex justify-center items-center w-2 h-2 rounded-full bg-red-500 text-xs text-white"></div>
       </button>
   </header>

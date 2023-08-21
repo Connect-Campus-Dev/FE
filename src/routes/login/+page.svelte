@@ -1,11 +1,13 @@
 <script>
     import { goto } from "$app/navigation";
-    import { toastMessage, API_BASE_URL } from '$lib/stores';
+    import { connectSocket, disconnectSocket } from '$lib/stores/socketStore';
+    import { toastMessage, API_BASE_URL, ACCESS_TOKEN, WS_BASE_URL } from '$lib/stores';
 
     let email = "";
     let password = "";
 
     async function login() {
+        console.log("login")
         const response = await fetch(`${API_BASE_URL}/auth/login`, {
 			method: 'POST',
             headers: {
@@ -18,12 +20,13 @@
 		});
 
         if(response.ok) {
-            response.json().then(data => {
-                if(data) {
-                    toastMessage.set('환영합니다');
-                    goto('/');
-                }
-            });
+            const accessToken = response.headers.get('Authorization');
+            if(accessToken) {
+                localStorage.setItem('accessToken', accessToken);
+                $ACCESS_TOKEN = accessToken;
+                connectSocket(WS_BASE_URL);
+                goto('/');
+            }
         }
 		if (!response.ok) {
             response.json().then(data => {
@@ -33,7 +36,6 @@
     }
 
 </script>
-
 <header class="mt-32 flex flex-col items-center justify-center">
     <h1 class="flex text-green-500 text-2xl font-extrabold">
         <img src="/logo.png" alt="logo" class="w-7 h-7 mr-1" />

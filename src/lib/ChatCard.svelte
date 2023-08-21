@@ -5,7 +5,7 @@
     export let lastUpdated = '5분전';
 </script>
 
-<button class="block w-full text-left flex my-4">
+<button class="block w-full text-left flex">
     <div class="bg-gray-300 rounded-full w-12 h-12" />
     <div class="ml-4 flex flex-col grow">
         <div class="flex justify-between items-center">

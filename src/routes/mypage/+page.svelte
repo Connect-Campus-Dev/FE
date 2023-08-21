@@ -2,6 +2,49 @@
     import Appbar from "$lib/Appbar.svelte";
     import Nav from "$lib/Nav.svelte";
     import Icon from "$lib/Icon.svelte";
+    import { onMount } from "svelte";
+    import { goto } from "$app/navigation";
+    import { toastMessage, API_BASE_URL, ACCESS_TOKEN } from '$lib/stores';
+    import { getUniversityName } from '$lib/utils';
+
+    let nickname = "",
+        email = "",
+        enrollYear = "";
+
+    onMount(async () => {
+        const accessToken = $ACCESS_TOKEN || localStorage.getItem('accessToken');
+        if(accessToken) {
+            $ACCESS_TOKEN = accessToken;
+            await getMyInfo();
+        }
+    });
+
+    async function getMyInfo() {
+        const response = await fetch(`${API_BASE_URL}/member`, {
+			method: 'GET',
+            headers: {
+				'Content-Type': 'application/json',
+                'Authorization': $ACCESS_TOKEN
+			},
+		});
+
+        if(response.ok) {
+            response.json().then(data => {
+                nickname = data.nickname;
+                email = data.email.value;
+                enrollYear = data.enrollYear.toString().slice(2,4);
+            });
+
+        }
+		if (!response.ok) {
+            response.json().then(data => {
+                if(data.code == 'M002') {
+                    goto('/login')
+                }
+                toastMessage.set(data.message)
+            });
+		}
+    }
 
     let isVerified = false;
 </script>
@@ -16,10 +59,10 @@
             </button>
         </div>
         <div class="flex flex-col">
-            <div class="font-bold text-xl">무마니</div>
-            <div class="text-sm text-gray-500">아주대학교 ｜ 18학번</div>
+            <div class="font-bold text-xl">{nickname}</div>
+            <div class="text-sm text-gray-500">{getUniversityName(email.split('@')[1])} ｜ {enrollYear}학번</div>
             <div class="text-sm text-gray-500">소프트웨어학과</div>
-            <div class="text-sm text-gray-500">moonman0429@ajou.ac.kr</div>
+            <div class="text-sm text-gray-500">{email}</div>
         </div>
     </div>
 

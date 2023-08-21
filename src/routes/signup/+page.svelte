@@ -70,6 +70,9 @@
 		else if (!response.ok) {
             response.json().then(data => {
                 toastMessage.set(data.message);
+                if(data.message == '이미 사용중인 이메일이에요.') {
+                    goto('/login')
+                }
             });
 		}
 	}
@@ -131,6 +134,7 @@
             isPasswordSame = true;
             isStep1ButtonDisabled = false;
         } else {
+            isStep1ButtonDisabled = true;
             isPasswordSame = false;
         }
     }
@@ -174,7 +178,7 @@
 
     function handleInput() {
         clearTimeout(timeout);
-        timeout = setTimeout(checkValidNickname, 1000);
+        timeout = setTimeout(checkValidNickname, 500);
     }
 
 

@@ -10,6 +10,7 @@
 	"devDependencies": {
 		"@sveltejs/adapter-auto": "^2.0.0",
 		"@sveltejs/kit": "^1.20.4",
+		"@types/ws": "^8.5.5",
 		"@zerodevx/svelte-toast": "^0.9.5",
 		"autoprefixer": "^10.4.14",
 		"postcss": "^8.4.24",
@@ -19,7 +20,9 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@stomp/stompjs": "^7.0.0",
 		"feather-icons": "^4.29.0",
-		"svelte-headroom": "^2.2.1"
+		"svelte-headroom": "^2.2.1",
+		"ws": "^8.13.0"
 	}
 }
