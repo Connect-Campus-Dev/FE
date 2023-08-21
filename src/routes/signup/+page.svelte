@@ -55,7 +55,7 @@
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify({"email": {"value": "moonman0429@ajou.ac.kr"}})
+			body: JSON.stringify({"email": {"value": email}})
 		});
 
         if(response.ok) {
