@@ -23,5 +23,5 @@ export function getUniversityName(emailDomain) {
 		"ssu.ac.kr": "숭실대학교",
 	};
 
-	return universityList[emailDomain] || "지잡대학교";
+	return universityList[emailDomain] || "?대학교";
 }

@@ -4,66 +4,39 @@
     import { goto } from "$app/navigation";
     import { onMount, onDestroy } from 'svelte';
     import { Client } from "@stomp/stompjs";
-    import { toastMessage } from '$lib/stores';
+    import { toastMessage, ACCESS_TOKEN, userId, userNickname, API_BASE_URL, messages } from '$lib/stores';
+    import { socketStore, connectSocket,  } from '$lib/stores/socketStore';
 
     const chatId = $page.params.id;
-    let messages = [];
     let messageInput = "";
     let inputElement;
 
     let stompClient;
+    let connected;
+
     let accessToken;
 
+    //채팅방 진입 시, 최근 메시지 50개 불러오기
+    //최하단 스크롤
+    //안읽은 메시지 관리?
     onMount(() => {
-        accessToken = localStorage.getItem('accessToken');
-        if(accessToken) {
-            stompClient = new Client({
-                brokerURL: "ws://localhost:8080/chat",
-                connectHeaders: {
-                    Authorization: accessToken
-                }
-            });
-            console.log(chatId)
-            stompClient.onConnect = (frame) => {
-                console.log("Connected: " + frame);
-                stompClient.subscribe(`/topic/${chatId}`, (message) => {
-                    console.log(message);
-                    messages = [...messages, JSON.parse(message.body)];
-                },
-                {
-                    Authorization: accessToken
-                },
-                (error) => {
-                    toastMessage.set('로그인이 필요합니다');
-                    goto('/login');
-                }
-                );
-            };
-            stompClient.onStompError = (frame) => {
-                console.log(frame);
-                toastMessage.set('인증정보가 유효하지 않거나, 올바르지 않은 접근입니다.');
-                stompClient.deactivate();
-                goto('../');
-            };
-            stompClient.activate();
-        }
-
-        //이전 채팅 기록을 가져오기
-        //timestamp 정렬
-        //messages = [...messages, ...data];
-
+        accessToken = $ACCESS_TOKEN || localStorage.getItem('accessToken');
+        getChatRecord(accessToken);
+        socketStore.subscribe(value => {
+            stompClient = value.stompClient;
+            connected = value.connected;
+        });
     });
 
-    onDestroy(() => {
-        if (stompClient) {
-            stompClient.deactivate();
+    $: {
+        if(connected) {
+            console.log(stompClient)
         }
-    });
-
-
+    }
 
     function send() {
-        const message = { chatId: chatId,  message: messageInput };
+        if(messageInput == "") return;
+        const message = { chatId: chatId, content: messageInput };
         stompClient.publish({
                 destination: `/app/chat/${chatId}`,
                 headers: {
@@ -71,29 +44,23 @@
                 },
                 body: JSON.stringify(message)
             });
-
-        console.log(message);
         messageInput = "";
         inputElement.focus();
     }
 
-    async function getChatRecord() {
-        const response = await fetch(`${API_BASE_URL}/chat/`, {
-			method: 'POST',
+    async function getChatRecord(accessToken) {
+        const response = await fetch(`${API_BASE_URL}/chat/${chatId}`, {
+			method: 'GET',
             headers: {
-				'Content-Type': 'application/json'
+				'Content-Type': 'application/json',
+                'Authorization': accessToken,
 			},
-			body: JSON.stringify({
-                "email": {"value": email},
-                "password": password
-            })
 		});
-
         if(response.ok) {
             response.json().then(data => {
                 if(data) {
-                    toastMessage.set('환영합니다');
-                    goto('/');
+                    //db에서 가져온 메시지 형식과 소켓에서 가져온 메시지 형식은 같아야함
+                    $messages = data;
                 }
             });
         }
@@ -125,9 +92,27 @@
     </button>
 </header>
 
-<main>
-    {#each messages as message, i}
-        {message.message}
+<main class="p-4">
+    {#each $messages as message, i}
+        {#if message.senderId == $userId}
+            <div class="flex w-full justify-end gap-2 mt-2">
+                <div>
+                    <div class="inline rounded-lg rounded-tr-none p-3 text-sm bg-green-500 text-white shadow-md">
+                        {message.content}
+                    </div>
+                </div>
+            </div>
+        {:else}
+            <div class="flex w-full justify-start gap-2 mt-4">
+                <div class="rounded-full bg-gray-300 w-10 h-10"></div>
+                <div>
+                    <div>{message.senderNickname}</div>
+                    <div class="mt-1 inline rounded-lg rounded-tl-none p-3 text-sm bg-white shadow-md">
+                        {message.content}
+                    </div>
+                </div>
+            </div>
+        {/if}
     {/each}
 </main>
 

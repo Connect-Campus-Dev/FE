@@ -18,7 +18,7 @@
 
     async function create() {
         const response = await fetch(`${API_BASE_URL}/chattest`, {
-            method: 'GET',
+            method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': accessToken,
@@ -35,8 +35,27 @@
         }
     }
 
+    async function getChats() {
+        const response = await fetch(`${API_BASE_URL}/chat`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': accessToken,
+            },
+        });
+        if(response.ok) {
+            response.json().then(data => {
+                if(data) {
+                    console.log(data);
+                }
+            });
+        }
+    }
+
     onMount(() => {
         accessToken = $ACCESS_TOKEN || localStorage.getItem('accessToken');
+        //채팅방 목록 불러오기
+
     });
 
 

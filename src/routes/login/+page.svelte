@@ -1,6 +1,6 @@
 <script>
     import { goto } from "$app/navigation";
-    import { connectSocket, disconnectSocket } from '$lib/stores/socketStore';
+    import { connectSocket,  } from '$lib/stores/socketStore';
     import { toastMessage, API_BASE_URL, ACCESS_TOKEN, WS_BASE_URL } from '$lib/stores';
 
     let email = "";

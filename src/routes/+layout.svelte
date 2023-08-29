@@ -9,21 +9,29 @@
     import { page } from "$app/stores";
 
     import { onDestroy, onMount } from 'svelte';
-    import { connectSocket, disconnectSocket } from '$lib/stores/socketStore';
-    import { WS_BASE_URL, ACCESS_TOKEN, toastMessage } from '$lib/stores';
+    import { connectSocket, socketStore } from '$lib/stores/socketStore';
+    import { WS_BASE_URL, ACCESS_TOKEN, toastMessage, userId, userNickname, currentPath } from '$lib/stores';
     import { goto } from "$app/navigation";
 
-    let currentPath;
-    $: currentPath = $page.url.pathname;
+    $currentPath = $page.url.pathname;
 
     //앱 첫 실행, 새로고침시 실행됨
     onMount(() => {
+        console.log("온마운트");
         const accessToken = $ACCESS_TOKEN || localStorage.getItem('accessToken');
+
         if (accessToken) {
             $ACCESS_TOKEN = accessToken;
+            const base64Url = accessToken.split('.')[1];
+            const base64 = base64Url.replace('-', '+').replace('_', '/');
+            const payload = JSON.parse(window.atob(base64));
+            $userId = payload.userId;
+            $userNickname = payload.nickname;
 
             if (currentPath !== '/login' && currentPath !== '/signup') {
-                connectSocket(WS_BASE_URL);
+                if($socketStore.stompClient == null) {
+                    connectSocket(WS_BASE_URL);
+                }
             } else {
                 goto('/');
             }
@@ -34,6 +42,12 @@
             goto('/login');
         }
     });
+
+    // onDestroy(() => {
+    //     disconnectSocket();
+    // });
+
+    //채팅
 
 </script>
 
