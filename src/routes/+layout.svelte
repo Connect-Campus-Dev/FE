@@ -23,6 +23,8 @@
         if (accessToken) {
             $ACCESS_TOKEN = accessToken;
             const base64Url = accessToken.split('.')[1];
+
+            //예외처리 필요 replace
             const base64 = base64Url.replace('-', '+').replace('_', '/');
             const payload = JSON.parse(window.atob(base64));
             $userId = payload.userId;
