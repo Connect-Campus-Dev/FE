@@ -222,6 +222,26 @@
 
 </script>
 
+<div class="flex items-center justify-center">
+    <h1 class="text-lg mr-4">
+        스텝 조작
+    </h1>
+    <button on:click={() => {
+        if(step > 0) {
+            step--;
+        }
+    }} class="border rounded-full border-gray-700">
+        <Icon icon="arrow-left" size={24} />
+    </button>
+    <button on:click={() => {
+        if(step < 4) {
+            step++;
+        }
+    }} class="border rounded-full border-gray-700">
+        <Icon icon="arrow-right" size={24} />
+    </button>
+</div>
+
 <!-- step 0: 이메일 인증 -->
 {#if step == 0}
 <main class="m-4">
@@ -233,18 +253,13 @@
     </div>
     <div class="flex items-center mt-24 gap-4">
         <input bind:value={email} disabled={isInputDisabled} type="text" placeholder="학교 이메일(@.ac.kr, @.edu)" class="w-full border border-b border-t-0 rounded-none border-x-0 {isSendButtonDisabled ? 'border-gray-300' : 'border-green-500'} p-4 disabled:bg-white" />
-        {#if !isSent}
         <button disabled={isSendButtonDisabled} on:click={sendCode} class="p-2 rounded-lg {isSendButtonDisabled ? "bg-gray-300" : "bg-green-500"} text-white">
             <Icon icon="send" size={24} />
         </button>
-        {:else}
-        <button disabled={isSendButtonDisabled} on:click={sendCode} class="p-2 rounded-lg {isSendButtonDisabled ? "bg-gray-300" : "bg-green-500"} text-white">
-            <Icon icon="send" size={24} />
-        </button>
-        {/if}
     </div>
 
-{#if isSent}
+
+<!-- {#if isSent} -->
 	<div in:blur="{{delay: 300}}" class="mt-8 flex justify-center items-end">
         <div class="w-full relative items-center flex h-14 rounded-none border-b {codeFulled ? 'border-green-500' : 'border-gray-300'} focus:outline-none mr-4">
             <input
@@ -266,8 +281,8 @@
 			인증하기
 		</button>
 	</div>
-
-{/if}
+    이메일 인증 버튼 전송 시, 생기는 부분
+<!-- {/if} -->
 
 {#if !isStep0ButtonDisabled}
 <div in:blur="{{delay: 300}}" class="mt-12 text-center text-green-500 shadow p-4 rounded-lg">
@@ -276,7 +291,8 @@
 {/if}
 
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+
+<div class="fixed bottom-0 max-w-lg w-full">
     <button disabled={isStep0ButtonDisabled}
         on:click={()=>{
             step = 1;
@@ -311,7 +327,7 @@
 
         <input bind:value={password2} minlength="8" type="password" placeholder="비밀번호 재입력" class="mt-8 w-full border border-b border-t-0 rounded-none border-x-0 {isPasswordSame ? 'border-green-500' : 'border-gray-300'} p-4" />
     </main>
-    <div class="fixed bottom-0 w-full inset-x-0">
+    <div class="fixed bottom-0 max-w-lg w-full">
         <button disabled={isStep1ButtonDisabled} type="submit" class="{isStep1ButtonDisabled ? 'bg-gray-300': 'bg-green-500'} text-white py-4 text-lg w-full">
             다음
         </button>
@@ -339,7 +355,7 @@
         <div class="text-gray-500 text-sm">({nickname.length}/10)</div>
     </div>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button disabled={!isValidnickname} on:click={()=>{
         step = 3;
     }}
@@ -371,7 +387,7 @@
         </button>
     </div>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button disabled={gender == ""}
         on:click={()=>{
         step = 4;
@@ -401,7 +417,7 @@
         {/each}
     </select>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button on:click={async()=>{
         await signUp();
     }}

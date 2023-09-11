@@ -7,32 +7,32 @@
     let password = "";
 
     async function login() {
-        console.log("login")
-        const response = await fetch(`${API_BASE_URL}/auth/login`, {
-			method: 'POST',
-            headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify({
-                "email": {"value": email},
-                "password": password
-            })
-		});
+        goto('/');
+        // const response = await fetch(`${API_BASE_URL}/auth/login`, {
+		// 	method: 'POST',
+        //     headers: {
+		// 		'Content-Type': 'application/json'
+		// 	},
+		// 	body: JSON.stringify({
+        //         "email": {"value": email},
+        //         "password": password
+        //     })
+		// });
 
-        if(response.ok) {
-            const accessToken = response.headers.get('Authorization');
-            if(accessToken) {
-                localStorage.setItem('accessToken', accessToken);
-                $ACCESS_TOKEN = accessToken;
-                connectSocket(WS_BASE_URL);
-                goto('/');
-            }
-        }
-		if (!response.ok) {
-            response.json().then(data => {
-                toastMessage.set(data.message)
-            });
-		}
+        // if(response.ok) {
+        //     const accessToken = response.headers.get('Authorization');
+        //     if(accessToken) {
+        //         localStorage.setItem('accessToken', accessToken);
+        //         $ACCESS_TOKEN = accessToken;
+        //         connectSocket(WS_BASE_URL);
+        //         goto('/');
+        //     }
+        // }
+		// if (!response.ok) {
+        //     response.json().then(data => {
+        //         toastMessage.set(data.message)
+        //     });
+		// }
     }
 
 </script>

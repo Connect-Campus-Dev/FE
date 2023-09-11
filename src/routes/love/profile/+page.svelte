@@ -69,7 +69,7 @@
         </select>
     </div>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button on:click={()=>{
         step = 1;
     }}
@@ -147,7 +147,7 @@
         </div>
       </ul>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button on:click={
         () => {
             step = 2;
@@ -173,7 +173,7 @@
         <div class="absolute right-12 font-extrabold text-lg">cm</div>
     </div>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button on:click={()=>{
         step = 3;
     }}
@@ -209,7 +209,7 @@
           </ul>
     </div>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button on:click={()=>{
         step = 4;
     }}
@@ -245,7 +245,7 @@
         {/each}
       </ul>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button on:click={()=>{
         step = 5;
     }}
@@ -269,7 +269,7 @@
         <input bind:value={intro} type="text" placeholder="한줄소개" class="w-full border border-b border-t-0 rounded-none border-x-0 border-gray-400 p-4" />
     </div>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button on:click={()=>{
         step = 6;
     }}
@@ -307,7 +307,7 @@
         </div>
     </div>
 </main>
-<div class="fixed bottom-0 w-full inset-x-0">
+<div class="fixed bottom-0 max-w-lg w-full">
     <button on:click={()=>{
         goto('/love');
     }}

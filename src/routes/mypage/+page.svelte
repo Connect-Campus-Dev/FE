@@ -7,9 +7,9 @@
     import { toastMessage, API_BASE_URL, ACCESS_TOKEN } from '$lib/stores';
     import { getUniversityName } from '$lib/utils';
 
-    let nickname = "",
-        email = "",
-        enrollYear = "";
+    let nickname = "닉네임",
+        email = "example@ajou.ac.kr",
+        enrollYear = "2018";
 
     onMount(async () => {
         const accessToken = $ACCESS_TOKEN || localStorage.getItem('accessToken');

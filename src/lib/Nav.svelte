@@ -12,7 +12,7 @@
 </script>
 
 <nav
-    class="flex justify-between items-center fixed bottom-0 max-w-md w-full py-1 px-2 border-t bg-white"
+    class="flex justify-between items-center fixed bottom-0 max-w-lg w-full py-1 px-2 border-t bg-white"
 >
     {#each nav as item}
         {#if currentPath === item.path}

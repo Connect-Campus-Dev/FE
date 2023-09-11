@@ -14,7 +14,7 @@
 
 </script>
 
-<div class="flex items-center max-w-md justify-between gap-4 p-4 bg-white border-b">
+<div class="flex items-center max-w-lg justify-between gap-4 p-4 bg-white border-b">
     <a href="/crew/search" class="flex items-center justify-center w-full h-10 px-4 bg-gray-100 rounded-full border-none gap-2">
         <Icon icon="search" size={20} color="lightgray" />
         <input

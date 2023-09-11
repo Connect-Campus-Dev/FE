@@ -1,5 +1,10 @@
-<div class="relative bg-white h-14 items-center border-b flex">
-    <button class="absolute p-4">
+<script>
+  import { goto } from '$app/navigation';
+  export let title = "TEXT";
+</script>
+
+<div class="relative sticky top-0 inset-x-0 bg-white h-14 items-center border-b flex">
+    <button on:click={()=>{goto('../')}} class="absolute p-4">
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -17,6 +22,6 @@
       </svg>
     </button>
     <div class="text-center w-full font-bold">
-      TEXT
+      {title}
     </div>
 </div>
