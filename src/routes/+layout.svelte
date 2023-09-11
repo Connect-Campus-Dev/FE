@@ -16,48 +16,64 @@
     $currentPath = $page.url.pathname;
 
     //앱 첫 실행, 새로고침시 실행됨
-    onMount(() => {
-        console.log("온마운트");
-        const accessToken = $ACCESS_TOKEN || localStorage.getItem('accessToken');
+    // onMount(() => {
+    //     const accessToken = $ACCESS_TOKEN || localStorage.getItem('accessToken');
 
-        if (accessToken) {
-            $ACCESS_TOKEN = accessToken;
-            const base64Url = accessToken.split('.')[1];
+    //     if (accessToken) {
+    //         $ACCESS_TOKEN = accessToken;
+    //         const base64Url = accessToken.split('.')[1];
 
-            //예외처리 필요 replace
-            const base64 = base64Url.replace('-', '+').replace('_', '/');
-            const payload = JSON.parse(window.atob(base64));
-            $userId = payload.userId;
-            $userNickname = payload.nickname;
+    //         //예외처리 필요 replace
+    //         const base64 = base64Url.replace('-', '+').replace('_', '/');
+    //         const payload = JSON.parse(window.atob(base64));
+    //         $userId = payload.userId;
+    //         $userNickname = payload.nickname;
 
-            if (currentPath !== '/login' && currentPath !== '/signup') {
-                if($socketStore.stompClient == null) {
-                    connectSocket(WS_BASE_URL);
-                }
-            } else {
-                goto('/');
-            }
-        } else if (currentPath !== '/login' && currentPath !== '/signup') {
-            localStorage.setItem('accessToken', null);
-            $ACCESS_TOKEN = null;
-            $toastMessage = '로그인이 필요합니다.';
-            goto('/login');
-        }
-    });
+    //         if (currentPath !== '/login' && currentPath !== '/signup') {
+    //             if($socketStore.stompClient == null) {
+    //                 connectSocket(WS_BASE_URL);
+    //             }
+    //         } else {
+    //             goto('/');
+    //         }
+    //     } else if (currentPath !== '/login' && currentPath !== '/signup') {
+    //         localStorage.setItem('accessToken', null);
+    //         $ACCESS_TOKEN = null;
+    //         $toastMessage = '로그인이 필요합니다.';
+    //         goto('/login');
+    //     }
+    // });
 
     // onDestroy(() => {
     //     disconnectSocket();
     // });
 
-    //채팅
-
 </script>
 
-<div class="w-full bg-gray-100">
+<!-- <div class="w-full bg-gray-100">
     <div class="flex justify-center">
         <div class="max-w-md w-full min-h-screen bg-white">
             <slot />
         </div>
     </div>
+</div> -->
+
+<div class="w-full bg-gray-50">
+	<div class="flex">
+		<!-- 여백 -->
+		<div class="hidden lg:block w-1/5" />
+
+		<!-- 모바일 뷰 -->
+		<div class="max-w-lg w-full min-h-screen bg-white">
+			<slot />
+		</div>
+
+		<!-- 설명 -->
+		<div class="hidden lg:block grow w-1/2">
+			<div class="sticky top-0 flex items-center justify-center min-h-screen">
+                설명
+			</div>
+		</div>
+	</div>
 </div>
 <Toast />
