@@ -6,7 +6,7 @@
     let tags = ['#신생', '#번개', '#런닝', '#클라이밍', '#술', '#노래', '#게임', '#쇼핑', '#헬스'];
 </script>
 
-<div class="flex items-center max-w-md justify-between gap-4 p-4 bg-white">
+<div class="flex items-center max-w-lg justify-between gap-4 p-4 bg-white">
     <a href="/crew" class="text-gray-600">
         <Icon icon="arrow-left" size={24} color="black" />
     </a>
