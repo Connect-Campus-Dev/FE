@@ -22,7 +22,6 @@
 	"dependencies": {
 		"@stomp/stompjs": "^7.0.0",
 		"feather-icons": "^4.29.0",
-		"svelte-headroom": "^2.2.1",
 		"ws": "^8.13.0"
 	}
 }
