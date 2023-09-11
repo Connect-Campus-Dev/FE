@@ -2,71 +2,42 @@
     import Icon from '$lib/Icon.svelte';
     import Nav from '$lib/Nav.svelte';
     import PostCard from '$lib/PostCard.svelte';
-    import Headroom from "svelte-headroom";
     import { onMount } from 'svelte';
-
-    const univActivity = [
-      {
-        name: '서울대',
-        count: 10,
-      },
-      {
-        name: '연세대',
-        count: 9,
-      },
-      {
-        name: '고려대',
-        count: 8,
-      },
-      {
-        name: '성균관대',
-        count: 7,
-      },
-      {
-        name: '서강대',
-        count: 6,
-      },
-      {
-        name: '중앙대',
-        count: 5,
-      },
-      {
-        name: '한양대',
-        count: 4,
-      }
-    ];
+    import { goto } from '$app/navigation';
 
     const tags = ['#아무말', '#홍보', '#취업', '#연애', '#술', '#유머', '#패션', '#헬스'];
 
-    //정렬
-    univActivity.sort((a, b) => {
-      return b.count - a.count;
-    });
-
+    let hideHeader = false;
+    let lastScrollPosition = 0;
     let showButton = false;
 
     function scrollToTop() {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function checkScrollPosition() {
-      if (window.scrollY > 200) {
-        showButton = true;
-      } else {
-        showButton = false;
-      }
-    }
+	onMount(() => {
+		const handleScroll = () => {
+			const currentScrollPosition = window.scrollY;
 
-  onMount(() => {
-    window.addEventListener('scroll', checkScrollPosition);
-    return () => {
-      window.removeEventListener('scroll', checkScrollPosition);
-    };
-  });
+			if (currentScrollPosition > lastScrollPosition && currentScrollPosition > 50) {
+				// 아래로 스크롤하고 50px 이상인 경우
+				hideHeader = true;
+			} else {
+				// 위로 스크롤하는 경우
+				hideHeader = false;
+			}
+
+			lastScrollPosition = currentScrollPosition;
+		};
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	});
 </script>
 
-<Headroom offset={100}>
-  <header class="flex items-center max-w-md justify-between gap-4 p-4 bg-white">
+<header class="sticky top-0 {hideHeader ? 'hide-animation' : ''}">
+  <header class="flex items-center max-w-lg justify-between gap-4 p-4 bg-white">
       <h1 class="font-extrabold text-2xl text-green-600">
           <a href="/"><img src="/logo.png" alt="홈아이콘" class="inline rounded-xl w-14" /></a>
       </h1>
@@ -85,7 +56,7 @@
   </header>
       <!-- 태그 -->
         <div
-          class="mb-4 pb-4 bg-white max-w-md border-b">
+          class="mb-4 pb-4 bg-white max-w-lg border-b">
 
           <div class="overflow-x-auto flex gap-2">
             {#each tags as tag, i}
@@ -97,9 +68,9 @@
             {/each}
           </div>
         </div>
-</Headroom>
+</header>
 
-<main class="mt-32">
+<main class="">
     <!-- 실시간 인기 포스트 -->
     <!-- <div class="flex justify-between items-center">
         <h3 class="p-4 font-bold text-lg text-gray-700">실시간 인기 포스트 🔥</h3>
@@ -126,15 +97,16 @@
 
 </main>
 
-<div class="h-36" />
-
 <!-- 포스트 작성 -->
-<button class="fixed bottom-20 left-1/2 -translate-x-1/2 flex items-center justify-center rounded-full bg-green-500 text-white">
-    <div class="flex items-center gap-2 text-sm px-4 py-3">
-        포스트 작성
-        <Icon icon="edit" size={16} />
-    </div>
-</button>
+<div class="w-full sticky bottom-20 max-w-lg flex items-center justify-center">
+	<button on:click={()=>{
+		goto('/post/write');
+	}} class="shadow-md rounded-full bg-green-500 text-white">
+		<div class="flex items-center gap-2 text-sm p-4">
+			<Icon icon="plus" size={24} />
+		</div>
+	</button>
+</div>
 
 <!-- 최상단가기 버튼 -->
 {#if showButton}
@@ -148,3 +120,11 @@
 <!-- 네비게이션 바 -->
 <Nav />
 
+<style>
+  header {
+    transition: transform 0.3s ease-in-out;
+  }
+  .hide-animation {
+    transform: translateY(-100%);
+  }
+</style>
