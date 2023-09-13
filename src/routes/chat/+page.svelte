@@ -26,7 +26,7 @@
         });
         if(response.ok) {
             response.json().then(data => {
-                goto(`/message/${data.id}`);
+                goto(`/chat/${data.id}`);
                 toastMessage.set('채팅방 생성에 성공했습니다.');
             });
         }
@@ -83,7 +83,7 @@
         {:else}
             <div class="p-4">
                 {#each crewChatList as chat}
-                    <a href="/message/1" class="block mb-4">
+                    <a href="/chat/1" class="block mb-4">
                         <ChatCard />
                     </a>
                 {/each}
@@ -100,7 +100,7 @@
         {:else}
             <div class="p-4">
                 {#each loveChatList as chat}
-                    <a href="/message/1" class="block mb-4">
+                    <a href="/chat/1" class="block mb-4">
                         <ChatCard />
                     </a>
                 {/each}
@@ -117,7 +117,7 @@
         {:else}
             <div class="p-4">
                 {#each dmChatList as chat}
-                    <a href="/message/1" class="block mb-4">
+                    <a href="/chat/1" class="block mb-4">
                         <ChatCard />
                     </a>
                 {/each}
@@ -132,4 +132,4 @@
 
 
 
-<Nav currentPath="/message" />
+<Nav currentPath="/chat" />

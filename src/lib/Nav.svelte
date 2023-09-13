@@ -2,7 +2,7 @@
     import Icon from "./Icon.svelte";
     const nav = [
         { title: "크루", path: "/crew", icon: "activity" },
-        { title: "메시지", path: "/message", icon: "message-square" },
+        { title: "메시지", path: "/chat", icon: "message-square" },
         { title: "커뮤니티", path: "/", icon: "home" },
         { title: "연애", path: "/love", icon: "heart" },
         { title: "마이페이지", path: "/mypage", icon: "user" },
@@ -22,7 +22,7 @@
                 <div class="mx-auto"><Icon icon={item.icon} size={24} /></div>
                 <div class="mt-1 text-xs">{item.title}</div>
                 <div
-                    class="{item.path !== '/message' &&
+                    class="{item.path !== '/chat' &&
                         'hidden'} absolute right-3 top-1 flex justify-center items-center w-4 h-4 rounded-full bg-red-500 text-xs text-white"
                 >
                     2
@@ -36,7 +36,7 @@
                 <div class="mx-auto"><Icon icon={item.icon} size={24} /></div>
                 <div class="mt-1 text-xs">{item.title}</div>
                 <div
-                    class="{item.path !== '/message' &&
+                    class="{item.path !== '/chat' &&
                         'hidden'} absolute right-3 top-1 flex justify-center items-center w-4 h-4 rounded-full bg-red-500 text-xs text-white"
                 >
                     2

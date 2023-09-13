@@ -75,7 +75,7 @@
 <header class="relative bg-white h-14 items-center sticky top-0 border-b flex z-10">
     <button
         on:click={() => {
-            goto("/crew");
+            goto("/chat");
         }}
         class="absolute p-4 text-gray-600"
     >
@@ -84,7 +84,7 @@
     <div class="text-center w-full font-bold">런닝맨</div>
     <button
         on:click={() => {
-            goto(`/crew/${chatId}/menu`);
+            goto(`/chat/${chatId}/menu`);
         }}
         class="absolute right-4 text-gray-600"
     >
@@ -118,7 +118,7 @@
 
 <!-- 메시지 입력창 -->
 <form on:submit|preventDefault={send}
-    class="bg-white fixed bottom-0 inset-x-0 gap-2 flex items-center py-3 px-4 shadow">
+    class="bg-white fixed bottom-0 w-full max-w-lg gap-2 flex items-center py-3 px-4 border border-x-0">
     <button type="button" class="text-gray-500">
         <Icon icon="plus" size={24} />
     </button>

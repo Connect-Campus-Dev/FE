@@ -4,6 +4,7 @@
     import PostCard from '$lib/PostCard.svelte';
     import { onMount } from 'svelte';
     import { goto } from '$app/navigation';
+    import logo from '$lib/assets/logo.png';
 
     const tags = ['#아무말', '#홍보', '#취업', '#연애', '#술', '#유머', '#패션', '#헬스'];
 
@@ -39,7 +40,7 @@
 <header class="sticky top-0 {hideHeader ? 'hide-animation' : ''}">
   <header class="flex items-center max-w-lg justify-between gap-4 p-4 bg-white">
       <h1 class="font-extrabold text-2xl text-green-600">
-          <a href="/"><img src="/logo.png" alt="홈아이콘" class="inline rounded-xl w-14" /></a>
+          <a href="/"><img src={logo} alt="홈아이콘" class="inline rounded-xl w-14" /></a>
       </h1>
       <div class="flex items-center justify-center w-full h-10 px-4 bg-gray-100 rounded-full border-none gap-2">
           <Icon icon="search" size={20} />
