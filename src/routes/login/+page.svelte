@@ -2,6 +2,7 @@
     import { goto } from "$app/navigation";
     import { connectSocket,  } from '$lib/stores/socketStore';
     import { toastMessage, API_BASE_URL, ACCESS_TOKEN, WS_BASE_URL } from '$lib/stores';
+    import logo from '$lib/assets/logo.png';
 
     let email = "";
     let password = "";
@@ -38,7 +39,7 @@
 </script>
 <header class="mt-32 flex flex-col items-center justify-center">
     <h1 class="flex text-green-500 text-2xl font-extrabold">
-        <img src="/logo.png" alt="logo" class="w-7 h-7 mr-1" />
+        <img src={logo} alt="logo" class="w-7 h-7 mr-1" />
         커넥트 캠퍼스
     </h1>
     <div class="text-gray-500 mt-2 font-bold">20대의 모든 순간을 함께해요</div>

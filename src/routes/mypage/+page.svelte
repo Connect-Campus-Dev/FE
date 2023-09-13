@@ -66,7 +66,7 @@
         </div>
     </div>
 
-    <div class="p-4">
+    <!-- <div class="p-4">
         {#if isVerified}
             <button class="bg-green-500 text-white w-full py-2 rounded-lg font-bold">
                 본인인증 하기
@@ -77,7 +77,7 @@
                 <Icon icon="check-circle" size={16} />
             </div>
         {/if}
-    </div>
+    </div> -->
 
     <!-- 연애 프로필 바로가기 -->
     <div class="mt-4 mb-8 flex justify-end">
